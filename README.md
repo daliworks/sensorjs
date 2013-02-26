@@ -6,7 +6,24 @@ sensor.js is just like node.js but for sensor especially.
 # Analysis
 Analysis for functional requirement candidates.
 
+* __TTA Standard - M2M Device Middleware Platform__
+	* quick review
+		- ‘M2M 서비스 요구 사항(TTAK.KO-06.0301)’ 및 ‘M2M 서비스 기능 구조 (TTAE.ET-TS 102 690)' 표준을 참조하였으며, M2M 단말의 미들웨어 플랫폼 관점에서 필요한 사항을 기술하였다. 새롭게 추가된 내용은 거의 없고, 단말 플랫폼 관점에서 설명한 것이다.
+    	- 모다 정보통신이 초안을 제출 했음.
+    	- 아래 섹션에 요구사항 정리된 것 참고 할만함.
+    	- 6.M2M 단말 미들웨어 요 구사항	
+ 	* __requirement list__
+		
 
+* __TTA STandard - B2B Type Communication Module for M2M__
+	* quick review
+		- M2M 통신 모듈의 물리적/전기적 표준임. 모다정보통신이 초안 제출. LG전자가 심의.
+ 		- 다음의 인터페이스 제공함을 알 수 있다.
+   			- USB 
+   			- UART
+   			- USIM
+   			- GPIO, GPIO 포트들 LED, SDIO, SPI, I2C, SDIO, SPK, MIC 로 사용할 수 있음.
+	* __requirement list__ 
 
 # Functional Requirements
 
