@@ -1,4 +1,4 @@
-*sensorjs
+sensorjs
 ========
 
 sensor.js is just like node.js but for sensor especially.
@@ -6,6 +6,12 @@ sensor.js is just like node.js but for sensor especially.
 # Analysis
 Analysis for functional requirement candidates.
 
+* __WebInOS service__
+	* TODO
+	
+	
+	
+	
 * __TTA STandard - M2M 서비스 기능 구조__
 	* M2M 애플리케이션, 네트워크 영역, 단말 및 게이트웨이를 포함하는 종단 간 M2M 서비스 기능 구조를 기술하며, 각 구성 요소의 식별(identification)과 구성 요소 들 사이에 관련된 참조 점(reference point)들에 대한 내용
 		* sensor.js에 네트워크 영역(+ 흐름도)에 대한 부분도 아키텍처에 포함시키기 위한 기본 참고 수준 정도 될듯.
@@ -29,35 +35,35 @@ Analysis for functional requirement candidates.
 				* M2M 네트워크 관리 기능
 					* 프로비저 닝, 감시(Supervision), 장애관리(Fault Management) 기능 등
 					* M2M 관리 기능
-							* MSBF(M2M Service Bootstrap Function) 포함					
+						* MSBF(M2M Service Bootstrap Function) 포함					
 		* __기능 구조__
 			* 참조점(Reference Point)
 				
 				*(TODO : mIa, dIa, mId 의 공통 요구사항에 대해서 정리)*
-					* mIa
-						* 네트워크 애플리케이션이 네트워크 도메인에 있는 M2M 서비스 기능에 접근할 수 있도록 해 준다.
-							* NSCL에 NA를 등록
-							* 적절한 권한을 부여 받았다는 조건에서 NSCL, GSCL, DSCL의 정보에 대한 읽기/쓰기 요청
-							* 단말 관리 수행 요청(소프트웨어 업그레이드, 구성 관리 등)
-							* 특정 이벤트들에 대한 가입 및 통지
-							* 그룹의 생성, 삭제 및 목록 조회 요청
-					* dIa
-						* M2M 단말 애플리케이션은 동일한 단말의 다른 서비스 기능에 접속 (또는 M2M 게이트웨이에 있는 서비스 기능에 접근)
-						* M2M 게이트웨이 애플리케이션이 동일한 M2M 게이트웨이의 다른 서비스 기능 에 접근
-							* DA/GA를 GSCL에 등록
-							* DA를 DSCL에 등록
-							* 적절한 권한을 부여받았다는 조건에서 NSCL, GSCL, DSCL의 정보에 대한 읽기/쓰기 요청
-							* 특정 이벤트들에 대한 가입 및 통지
-							* 그룹의 생성, 삭제 및 목록 조회 요청
-					* mId
-						* M2M 단말(또는 게이트웨이)에 위치한 서비스 기능과 네트워크 도메인 에 위치한 서비스 기능 사이의 상호 통신을 가능하게 함
-						* (SCL사이의) 상호간 통신을 위한 방법으로 코어 네트워크의 접속 기능을 사용
-							* DSCL/DSCL을 NSCL에 등록
-							* 적절한 권한을 부여 받았다는 조건에서 NSCL, GSCL, DSCL의 정보에 대한 읽기/ 쓰기 요청
-							* 단말 관리 수행 요청(소프트웨어 업그레이드, 구성 관리 등)
-							* 특정 이벤트들에 대한 가입 및 통지
-							* 그룹의 생성, 삭제 및 목록 조회 요청
-							* 보안 관련된 기능들을 제공
+				* mIa
+					* 네트워크 애플리케이션이 네트워크 도메인에 있는 M2M 서비스 기능에 접근할 수 있도록 해 준다.
+						* NSCL에 NA를 등록
+						* 적절한 권한을 부여 받았다는 조건에서 NSCL, GSCL, DSCL의 정보에 대한 읽기/쓰기 요청
+						* 단말 관리 수행 요청(소프트웨어 업그레이드, 구성 관리 등)
+						* 특정 이벤트들에 대한 가입 및 통지
+						* 그룹의 생성, 삭제 및 목록 조회 요청
+				* dIa
+					* M2M 단말 애플리케이션은 동일한 단말의 다른 서비스 기능에 접속 (또는 M2M 게이트웨이에 있는 서비스 기능에 접근)
+					* M2M 게이트웨이 애플리케이션이 동일한 M2M 게이트웨이의 다른 서비스 기능 에 접근
+						* DA/GA를 GSCL에 등록
+						* DA를 DSCL에 등록
+						* 적절한 권한을 부여받았다는 조건에서 NSCL, GSCL, DSCL의 정보에 대한 읽기/쓰기 요청
+						* 특정 이벤트들에 대한 가입 및 통지
+						* 그룹의 생성, 삭제 및 목록 조회 요청
+				* mId
+					* M2M 단말(또는 게이트웨이)에 위치한 서비스 기능과 네트워크 도메인 에 위치한 서비스 기능 사이의 상호 통신을 가능하게 함
+					* (SCL사이의) 상호간 통신을 위한 방법으로 코어 네트워크의 접속 기능을 사용
+						* DSCL/DSCL을 NSCL에 등록
+						* 적절한 권한을 부여 받았다는 조건에서 NSCL, GSCL, DSCL의 정보에 대한 읽기/ 쓰기 요청
+						* 단말 관리 수행 요청(소프트웨어 업그레이드, 구성 관리 등)
+						* 특정 이벤트들에 대한 가입 및 통지
+						* 그룹의 생성, 삭제 및 목록 조회 요청
+						* 보안 관련된 기능들을 제공
 							
 			* 상위개념 동작절차
 				* Application Registration
