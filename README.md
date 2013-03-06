@@ -7,10 +7,31 @@ sensor.js is just like node.js but for sensor especially.
 Analysis for functional requirement candidates.
 
 * __WebInOS service__
-	* TODO
-	
-	
-	
+	* [Glossary](http://www.webinos.org/content/html/D033/Glossary.htm)
+	* [WebInOS System Specification](http://www.webinos.org/content/html/D033/)
+		* [Architecture](http://www.webinos.org/content/html/D033/Architecture_Overview.htm)
+			* ***PZP***
+				* Routes all 'Internet' messages to PZH
+				* Routes 'local' messages to other PZPs
+				* Can perform PZP to PZP communication for optimisation reasons
+				* The PZP acts as a stand-in when devices are temporarily not connected to the Internet
+				* Performs functions of PZH when PZH is not accessible
+				* PZP is stores various information (context information, event messages) until next sync with PZH is possible
+				* PZP is responsible for discovery of local bearers (Bluetooth, ZigBee, NFC)￼
+				
+			* ***PZH***
+				* User authentication service
+				* Session creation for messages and synchronization
+				* Single-sign on point for web services
+				* Host for webinos web services
+				* Master repository for context data
+				* Central repository of policy rules
+				* Policy enforcement point for remote communication
+			* ***Common/Core***
+				* TBD
+			* ***Applications***
+			* ***API***
+			* ***Informative***
 	
 * __TTA STandard - M2M 서비스 기능 구조__
 	* M2M 애플리케이션, 네트워크 영역, 단말 및 게이트웨이를 포함하는 종단 간 M2M 서비스 기능 구조를 기술하며, 각 구성 요소의 식별(identification)과 구성 요소 들 사이에 관련된 참조 점(reference point)들에 대한 내용
