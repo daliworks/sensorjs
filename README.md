@@ -17,8 +17,7 @@ Analysis for functional requirement candidates.
 				* The PZP acts as a stand-in when devices are temporarily not connected to the Internet
 				* Performs functions of PZH when PZH is not accessible
 				* PZP is stores various information (context information, event messages) until next sync with PZH is possible
-				* PZP is responsible for discovery of local bearers (Bluetooth, ZigBee, NFC)￼
-				
+				* PZP is responsible for discovery of local bearers (Bluetooth, ZigBee, NFC)
 			* ***PZH***
 				* User authentication service
 				* Session creation for messages and synchronization
@@ -28,10 +27,35 @@ Analysis for functional requirement candidates.
 				* Central repository of policy rules
 				* Policy enforcement point for remote communication
 			* ***Common/Core***
-				* TBD
+				* Synchronization for both PZH and PZP on all the devices
+					* certificates and policies
+				* Key Infrastructure
+					* (use, management, distribution) Keys and Certificates
+					* Storage interface
+					* Backup and recovery
+				* Policy
+					* Access policy
+					* Privacy and data handling policies
+					* [PrimeLife](http://primelife.ercim.eu/)
+				* Service Discovery
+					* Intra-Zone service discovery (PZPs and PZH)
+					* Inter-Zone service discovery (PZs and PZ)
+				* Messaging and Routing
+					* Generic Message Object and its subclass
+					* Routing manager for creating and maintaining routing table, checking and dispatching messages
+					* Point-to-point and Publish-subscribe routing model
+					* Application and Network level routing
+				* Context Manager
+					* **Identification** of Context data relevant for the webinos operation.
+					* **Detection** of Context Data within webinos and related Context Sources identification of existing APIs to be used
+					* **Acquisition** of Context Data for webinos system identification of existing APIs to be used
+					* **Representation** of Context Data within webinos definition of the necessary context structures in specific data format
+					* **Storage** of Context Data within webinos _definition of suitable data storage facility
+					* **Distribution** of Context Data among webinos entities specification of the necessary APIs to be created
 			* ***Applications***
+				* *TODO : out of scope?*
 			* ***API***
-			* ***Informative***
+				* *TODO : after finishing architecting*
 	
 * __TTA STandard - M2M 서비스 기능 구조__
 	* M2M 애플리케이션, 네트워크 영역, 단말 및 게이트웨이를 포함하는 종단 간 M2M 서비스 기능 구조를 기술하며, 각 구성 요소의 식별(identification)과 구성 요소 들 사이에 관련된 참조 점(reference point)들에 대한 내용
@@ -330,7 +354,7 @@ for Wireless Sensor Networks](http://rtcm.inescn.pt/fileadmin/rtcm/Workshop_11_F
 		* remote logging
 	* lifecycle
 		* install/uninstall/update/stop/start
-		* distribution/signing
+		* distribution/signing 
 
 ===
 by [@sensorjs](https://twitter.com/sensorjs)
