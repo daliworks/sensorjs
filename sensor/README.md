@@ -1,4 +1,5 @@
 ## supported sensors
+All sensors and auctuators are tested on Beaglebone Black.
 
 ### sensor
  - ds18b20: temperature sensor over 1 wire network
@@ -6,6 +7,7 @@
  - onoff: switch over GPIO
  - powerSource: detect power source from i2c bus
  - sensorTag: TI sensor tag over Bluetooth LE
+    - Note: Bluetooth LE network generic support is under way.
 
 ### actuator
 
@@ -57,6 +59,21 @@ targets.forEach(function (target) {
 });
 ```
 
+## sensor/actuator properties
+
+
+Ds18b20 example:
+```js
+  supportedNetworks: ['oneWire'],  // working over 1-wire network
+  sensorType: 'temperature',  
+  onChange: false,            // polling type sensor(not interrupt type)
+  discoverable: true,         // discoverable thru 1-wire network 
+  recommendedInterval: 10000, // recommended data gathering interval
+  maxInstances: 7,            // max # of sensors to be attached 
+  model: 'ds18b20',     
+  maxRetries: 8               // max # of retries on error
+
+```
 ## sensor data format
 
 ### ok example

@@ -1,10 +1,24 @@
 'use strict';
-var Gpio = require('onoff').Gpio; // Constructor function for Gpio objects.
+var Gpio = require('onoff').Gpio, // Constructor function for Gpio objects.
+  util = require('util'),
+  Actuator = require('../').Actuator;
 
 // Led constructor
 var Led = function (gpioNum/*, options*/) {
   this.gpio = new Gpio(gpioNum, 'out');
 };
+
+Led.properties = {
+  supportedNetworks: ['gpio'],
+  actuatorType: 'led',
+  discoverable: false,
+  maxInstances: 5,
+  id: '{model}-{macAddress}',
+  model: 'rgbLED',
+  commands: ['on', 'off', 'blink'],
+};
+util.inherits(Led, Actuator);
+
 /* Turn LED on */
 Led.prototype.on = function () {
   this._clear();
@@ -56,5 +70,6 @@ Led.prototype._clear = function () {
     this.offTimer = null;
   }
 };
+
 
 module.exports = Led;
