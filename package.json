@@ -21,7 +21,7 @@
   },
   "main": "index",
   "keywords": [
-    "sensorjs", "sensor", "iot", "wot", "driver", "sensor.js"
+    "sensorjs", "sensor.js", "sensor", "beaglebone", "iot", "wot", "driver"
   ],
   "engines": {
     "node": "0.8.x"
