@@ -17,10 +17,12 @@ var app = connect().
       if (data.value > 30) {
         data.message = 'too hot';  
       }
+      next();
     } else if (data.driver === 'dht11') {
       if (data.value < 20) {
         data.message = 'too dry';  
       }
+      next();
     } else {
       next(new Error('this will not connect to websocket below'));
     }
