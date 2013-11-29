@@ -1,7 +1,7 @@
 {
   "name": "sensorjs",
   "description": "sensor framework",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "byungjung",
     "email": "byungjung.kim@daliworks.co.kr"
