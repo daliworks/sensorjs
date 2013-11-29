@@ -3,6 +3,7 @@
 var EventEmitter = require('events').EventEmitter,
   util = require('util'),
   sensors = require('../'),
+  _ = require('lodash'),
   logger = require('log4js').getLogger('Sensor');
 
 function template(str, tokens) {
@@ -10,12 +11,14 @@ function template(str, tokens) {
     return tokens[key];
   });
 }
-
 function lower1stLetter(string)
 {
   return string.charAt(0).toLowerCase() + string.slice(1);
 }
 
+/*
+ * Sensor
+ */
 function Sensor(id, options) {
   var driverName = lower1stLetter(this.constructor.name);
   var props = this.properties = sensors.getSensorProperties(driverName);
@@ -83,13 +86,29 @@ Sensor.getLogger = function () {
 
 Sensor.prototype.close = function () {};
 
+/*
+ * Actuator
+ */
 function Actuator(id, options) {
   this.id = id;
   this.options = options;
   EventEmitter.call(this);
 }
 util.inherits(Actuator, EventEmitter);
+
 Actuator.properties = {};
+
+Actuator.set = function (cmd, options, cb) {
+  if (_.contains(this.properties.commands, cmd)) {
+    return this[cmd](options, cb);
+  } else {
+    return cb && cb(new Error('unknown command'));
+  }
+};
+
+Actuator.getStatus = function () {
+  return undefined;
+};
 
 exports.Sensor = Sensor;
 exports.Actuator = Actuator;
