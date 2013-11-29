@@ -2,10 +2,12 @@
 
 This module handles all about sensor with powerful and familiar techs.
 In other words this sensorjs is not only sensor driver module but also framework like express.
-And it's working model as shown below.
+
+And it's working on linux boards such as the BeagleBone or Raspberry Pi.
+
 ![gateway](doc/image/gateway.png "gateway")
 
-[Here](https://github.com/daliworks/sensorjs/blob/master/lib/sensor/README.md) is currently availiable sensors.
+[Here](https://github.com/daliworks/sensorjs/blob/master/lib/sensor/README.md) is currently available sensors.
 
 ## Installation
 
