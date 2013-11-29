@@ -5,7 +5,7 @@ In other words this sensorjs is not only sensor driver module but also framework
 
 And it's working on linux boards such as the BeagleBone or Raspberry Pi.
 
-![gateway](https://github.com/daliworks/sensorjs/blob/master/doc/image/gateway.png "gateway")
+![gateway](https://raw.github.com/daliworks/sensorjs/master/doc/image/gateway.png "gateway")
 
 [Here](https://github.com/daliworks/sensorjs/blob/master/lib/sensor/README.md) is currently available sensors.
 
