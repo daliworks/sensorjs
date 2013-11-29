@@ -12,21 +12,6 @@ var app = connect().
     } 
     next();
   }).
-  use(function (data, next) {
-    if (data.driver === 'ds18b20') {
-      if (data.value > 30) {
-        data.message = 'too hot';  
-      }
-      next();
-    } else if (data.driver === 'dht11') {
-      if (data.value < 20) {
-        data.message = 'too dry';  
-      }
-      next();
-    } else {
-      next(new Error('this will not connect to websocket below'));
-    }
-  }).
   // transport(mqtt, localStorage, websocket and etc)
   use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));
 
@@ -36,20 +21,5 @@ sensor.discover('oneWire'/*sensor network*/, function (err, ids) {
 
     // listen to sensor data for connecting 
     app.listen(thermometer);
-    
-    // or simply get sensor data once
-    // thermometer.get(function (err, data) {
-    //   if (!err) {
-    //     console.log(data);
-    //   } 
-    // });
-    // or in case of actuator
-    // someActuator.set(data, function (err) {});
-  });
-});
-sensor.discover('gpio', function (err, ids) {
-  ids.forEach(function (id) {
-    var hygrometer = sensor.createSensor('dht11', id);
-    app.listen(hygrometer);
   });
 });
