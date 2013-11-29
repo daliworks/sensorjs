@@ -5,10 +5,9 @@ In other words this sensorjs is not only sensor driver module but also framework
 And it's working model as shown below.
 ![gateway](doc/image/gateway.png "gateway")
 
+## Installation
 
-## Install
-
-  $ npm install sensorjs 
+    $ npm install sensorjs 
 
 ## example - get
 
@@ -35,8 +34,8 @@ var connect = require('sensorjs'),
 
 var app = connect().
   use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
-  use(connect.average(5 /*duration*/)).      // reduce: to an average every 5 sec.
-  use(connect.queue(100)).                   // buffering max # of 100.
+  use(connect.average(5 /*duration*/)).       // reduce: to an average every 5 sec.
+  use(connect.queue(100)).                    // buffering max # of 100.
   // transport(mqtt, localStorage, websocket and etc)
   use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));
 
@@ -52,9 +51,9 @@ sensor.discover('oneWire', function (err, ids) {
 ```javascript
 var app = connect().
   use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
-  use(connect.average(5 /*duration*/)).      // reduce: values to an average every 5 sec.
-  use(connect.queue(100)).                   // buffering max # of 100.
-  use(function (data, next) {                // custom middleware
+  use(connect.average(5 /*duration*/)).       // reduce: to an average every 5 sec.
+  use(connect.queue(100)).                    // buffering max # of 100.
+  use(function (data, next) {                 // custom middleware
     if (Math.max.apply(null, data.queue) < data.value) {
       data.hint = 'new record';
     } 
@@ -72,7 +71,7 @@ var app = connect().
     }
     next();
   }).
-  use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));>)})>)})
+  use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));
 ```
 
 There are more [examples](https://github.com/daliworks/sensorjs/tree/master/example).
