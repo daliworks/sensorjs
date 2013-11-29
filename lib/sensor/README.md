@@ -10,6 +10,7 @@ All sensors and auctuators are tested on Beaglebone Black.
     - Note: Bluetooth LE network generic support is under way.
 
 ### actuator
+ - led: rgb leds
 
 ## Example 
 
