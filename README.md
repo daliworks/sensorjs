@@ -12,7 +12,7 @@ And it's working model as shown below.
 
 ## Quick example
 
-``javascript
+```javascript
 var sensor = require('sensorjs').sensor;
 
 sensor.discover('oneWire', function (err, ids) {
