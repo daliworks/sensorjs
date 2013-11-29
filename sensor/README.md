@@ -16,7 +16,7 @@ All sensors and auctuators are tested on Beaglebone Black.
 This example code is to access sensors: ds18b20 and dht22/dht11. ds18b20 uses 1-wire network and dht22/dht11 uses GPIO port thru proprietry protocol.
 
 ```js
-var sensors = require('./sensor/');
+var sensor = require('./sensor/');
 
 var targets = [{ 
     driverName: 'ds18b20',  //  temperature sensor over 1-wire sensor network
@@ -27,34 +27,34 @@ var targets = [{
   }];
 
 targets.forEach(function (target) {
-  var props = sensors.getSensorProperties(target.driverName),
+  var props = sensor.getSensorProperties(target.driverName),
       sensorId;
 
   if (props.discoverable) { // discoverable over sensor network
-    sensors.discover(props.supportedNetworks[0], function (err, foundIDs) {
+    sensor.discover(props.supportedNetworks[0], function (err, foundIDs) {
       if (err) {
         console.error('err=', err.stack);
       } else {
         if (foundIDs.length > 0) { //discovered
           sensorId = foundIDs[0]; // pick 1st one from the discovered IDs
-          var sensor = sensors.createSensor(target.driverName, sensorId, target.options);
+          var snsr = sensor.createSensor(target.driverName, sensorId, target.options);
 
           // listening sensor data at the recommended interval
-          sensor.on('data', function (data) { 
+          snsr.on('data', function (data) { 
             console.log('data=', data); 
           });
-          sensor.listen(props.recommendedInterval);
+          snsr.listen(props.recommendedInterval);
         }
       }
     });
   } else { // not discoverable
-    var sensor = sensors.createSensor(target.driverName, null/*sensorId*/, target.options);
+    var snsr = sensor.createSensor(target.driverName, null/*sensorId*/, target.options);
 
     // listening sensor data at the recommended interval
-    sensor.on('data', function (data) {
+    snsr.on('data', function (data) {
       console.log('data=', data);
     });
-    sensor.listen(props.recommendedInterval);
+    snsr.listen(props.recommendedInterval);
   }
 });
 ```
