@@ -10,18 +10,26 @@
     "log4js": "0.6.8",
     "i2c": "0.1.4",
     "onoff": "0.1.5",
-    "lodash": "~2.2.1"
+    "lodash": "~2.2.1",
+    "underscore-query": "~0.4.0",
+    "socket.io-client": "~0.9.16"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:daliworks/sensorjs"
   },
   "bugs": {
-    "url" : "https://github.com/daliworks/sensorjs/issues"
+    "url": "https://github.com/daliworks/sensorjs/issues"
   },
   "main": "index",
   "keywords": [
-    "sensorjs", "sensor.js", "sensor", "beaglebone", "iot", "wot", "driver"
+    "sensorjs",
+    "sensor.js",
+    "sensor",
+    "beaglebone",
+    "iot",
+    "wot",
+    "driver"
   ],
   "engines": {
     "node": "0.8.x"
