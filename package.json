@@ -1,3 +1,35 @@
 {
-"name": "sensorjs"
+  "name": "sensorjs",
+  "description": "sensor framework",
+  "version": "0.0.2",
+  "author": {
+    "name": "byungjung",
+    "email": "byungjung.kim@daliworks.co.kr"
+  },
+  "dependencies": {
+    "log4js": "0.6.8",
+    "i2c": "0.1.4",
+    "onoff": "0.1.5",
+    "lodash": "~2.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:daliworks/sensorjs"
+  },
+  "bugs": {
+    "url" : "https://github.com/daliworks/sensorjs/issues"
+  },
+  "main": "index",
+  "keywords": [
+    "sensorjs", "sensor.js", "sensor", "beaglebone", "iot", "wot", "driver"
+  ],
+  "engines": {
+    "node": "0.8.x"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/daliworks/sensorjs/blob/msater/LICENSE"
+    }
+  ]
 }
