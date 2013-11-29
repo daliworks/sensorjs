@@ -3,7 +3,7 @@ var connect = require('sensorjs'),
    sensor = require('sensorjs').sensor;
 
 var app = connect().
-  use(connect.query({$between: [-50, 50]})). // filter: passing between -50 and 50
+  use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
   use(connect.average(5 /*duration*/)).      // reduce: values to an average every 5 sec.
   use(connect.queue(100)).                   // buffering max # of 100.
   use(function (data, next) {                // custom middleware
