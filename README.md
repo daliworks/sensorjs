@@ -5,6 +5,8 @@ In other words this sensorjs is not only sensor driver module but also framework
 And it's working model as shown below.
 ![gateway](doc/image/gateway.png "gateway")
 
+[Here](https://github.com/daliworks/sensorjs/blob/master/lib/sensor/README.md) is currently availiable sensors.
+
 ## Installation
 
     $ npm install sensorjs 
