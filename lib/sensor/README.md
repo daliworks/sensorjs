@@ -4,13 +4,14 @@ All sensors and auctuators are tested on Beaglebone Black.
 ### sensor
  - ds18b20: temperature sensor over 1 wire network
  - dht22/dht11: temperature/humidity sensor over GPIO
- - onoff: switch over GPIO
+ - magnetic switch: open/close switch over GPIO
  - powerSource: detect power source from i2c bus
  - sensorTag: TI sensor tag over Bluetooth LE
     - Note: Bluetooth LE network generic support is under way.
+ - (New) Motion detect: motion detection sensor
 
 ### actuator
- - led: rgb leds
+ - led: leds over gpio
 
 ## Example 
 

@@ -13,7 +13,14 @@ And it's working on linux boards such as the BeagleBone or Raspberry Pi.
 
     $ npm install sensorjs 
 
-## example - get
+## sensor.js URL scheme
+### sensorjs://{sensor network}[:{bus id}]/{address}/{sensor model}/{sensor id}
+ - example
+    - ```sensorjs://ble/000A3A58F310/dht22/22-000003a7f590```
+    - ```sensorjs://i2c:1/33/dht33/22-000003a7f590```
+    - ```sensorjs://gpio/22/singleled/r222```
+
+## Example - get
 
 ```javascript
 var sensor = require('sensorjs').sensor;
@@ -63,13 +70,13 @@ var app = connect().
     } 
     next();
   }).
-  use('/oneWire/ds18b20', function (data, next) {
+  use('/oneWire/22/ds18b20', function (data, next) {
     if (data.value > 30) {
       data.message = 'too hot';  
     }
     next();
   }).
-  use('/gpio/dht11', function (data, next) {
+  use('/gpio/23/dht11', function (data, next) {
     if (data.value < 20) {
       data.message = 'too dry';  
     }
