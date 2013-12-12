@@ -1,5 +1,5 @@
 'use strict';
-var sensor = require('sensorjs').sensor;
+var sensor = require('../').sensor;
 
 sensor.discover('oneWire'/*sensor network*/, function (err, ids) {
   ids.forEach(function (id) {

@@ -12,7 +12,7 @@
     "onoff": "0.1.5",
     "lodash": "~2.2.1",
     "underscore-query": "~0.4.0",
-    "socket.io-client": "~0.9.16"
+    "socket.io-client": "~0.9.11"
   },
   "repository": {
     "type": "git",

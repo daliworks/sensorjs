@@ -1,6 +1,6 @@
 'use strict';
-var connect = require('sensorjs'),
-   sensor = require('sensorjs').sensor;
+var connect = require('../'),
+   sensor = connect.sensor;
 
 var app = connect().
   use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
