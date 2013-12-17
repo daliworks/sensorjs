@@ -1,7 +1,7 @@
 'use strict';
 var connect = require('sensorjs'),
    sensor = connect.sensor,
-   oneWire = sensor.createNetwork('oneWire');
+   ble = sensor.createNetwork('ble');
 
 var app = connect().
   use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
@@ -16,11 +16,18 @@ var app = connect().
   // transport(mqtt, localStorage, websocket and etc)
   use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));
 
-oneWire.discover('ds18b20'/* sensor driver name */, function (err, devices) {
+ble.discover('PXP'/* sensor driver name(or profile name) */, function (err, devices) {
   devices.forEach(function (device) {
-    var thermometer = sensor.createSensor(device);
+    if (device.sensors) {
+      device.connect();
+      var thermometer = device.createSensor(device.sensors[0] );
 
-    // listen to sensor data
-    app.listen(thermometer);
+      // listen to sensor data
+      app.listen(thermometer);
+    }
   });
 });
+
+var device = ble.createDevice('addr');
+device.connect();
+device.createSensor('sensorid');
