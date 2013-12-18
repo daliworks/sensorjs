@@ -3,9 +3,9 @@ var sensorDriver = require('../').sensor;
 
 sensorDriver.discover('ds18b20'/* sensor driver name */, function (err, devices) {
   devices.forEach(function (device) {
-    device.sensors.forEach(function (sensorInfo) {
+    device.sensorUrls.forEach(function (sensorUrl) {
       //device.connect(); //auto
-      var thermometer = sensorDriver.createSensor(sensorInfo); 
+      var thermometer = sensorDriver.createSensor(sensorUrl); 
       thermometer.get(function (err, data) {
         if (!err) {
           console.log(data);
@@ -15,9 +15,24 @@ sensorDriver.discover('ds18b20'/* sensor driver name */, function (err, devices)
   });
 });
 
-var therm = sensorDriver.createSensor('url');
+sensorDriver.getNetwork('w1').discover(null/* sensor driver name */, function (err, devices) {
+  devices.forEach(function (device) {
+    device.sensorUrls.forEach(function (sensorUrl) {
+      //device.connect(); //auto
+      var thermometer = sensorDriver.createSensor(sensorUrl); 
+      thermometer.get(function (err, data) {
+        if (!err) {
+          console.log(data);
+        } 
+      });
+    });
+  });
+});
+
+var url = 'sensorjs:///w1/28-000003a7f590/ds18b20/28-000003a7f590';
+var therm = sensorDriver.createSensor(url);
 therm.get(function (err, data) {
-  console.log(data);
+  console.log(url, data);
 });
 
 //url
