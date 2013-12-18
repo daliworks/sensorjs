@@ -1,18 +1,18 @@
 'use strict';
-var sensorDriver = require('sensorjs').sensor;
+var sensorDriver = require('../').sensor;
 
 sensorDriver.discover('ds18b20'/* sensor driver name */, function (err, devices) {
   devices.forEach(function (device) {
     device.sensors.forEach(function (sensorInfo) {
       //device.connect(); //auto
       var thermometer = sensorDriver.createSensor(sensorInfo); 
-    thermometer.get(function (err, data) {
-      if (!err) {
-        console.log(data);
-      } 
+      thermometer.get(function (err, data) {
+        if (!err) {
+          console.log(data);
+        } 
+      });
     });
   });
-});
 });
 
 var therm = sensorDriver.createSensor('url');
