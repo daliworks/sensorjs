@@ -20,8 +20,8 @@ sensorDriver.discover('ds18b20'/* sensor driver name */, function (err, devices)
     device.sensorUrls.forEach(function (sensorUrl) {
       var thermometer = sensorDriver.createSensor(sensorUrl);
 
-    // listen to sensor data for connecting 
-    app.listen(thermometer);
+      // listen to sensor data for connecting 
+      app.listen(thermometer);
+    });
   });
-});
 });

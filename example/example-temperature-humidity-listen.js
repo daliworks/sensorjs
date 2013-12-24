@@ -31,7 +31,7 @@ sensorDriver.discover('ds18b20'/*sensor network*/, function (err, devices) {
   devices.forEach(function (device) {
     device.sensorUrls.forEach(function(sensorUrl) {
       app.listen(sensorDriver.createSensor(sensorUrl));
-});
+    });
   });
 });
 // gpio is not discoverable
