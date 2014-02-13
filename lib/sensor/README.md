@@ -9,6 +9,7 @@ All sensors and auctuators are tested on Beaglebone Black.
  - sensorTag: TI sensor tag over Bluetooth LE
     - Note: Bluetooth LE network generic support is under way.
  - (New) Motion detect: motion detection sensor
+ - (New) Photocell: light sensor over analog
 
 ### actuator
  - led: leds over gpio
