@@ -20,72 +20,9 @@ And it's working on linux boards such as the BeagleBone or Raspberry Pi.
     - ```sensorjs:///i2c:1/33/dht33/22-000003a7f590```
     - ```sensorjs:///gpio/22/singleled/r222```
 
-## Example - get
+## Example
 
-```javascript
-var sensor = require('sensorjs').sensor;
-
-sensor.discover('oneWire', function (err, ids) {
-  ids.forEach(function (id) {
-    var thermometer = sensor.createSensor('ds18b20', id);
-
-    thermometer.get(function (err, data) {
-      if (!err) {
-        console.log(data);
-      } 
-    });
-  });
-});
-```
-
-## example - listen and transport
-```javascript
-var connect = require('sensorjs'),
-   sensor = require('sensorjs').sensor;
-
-var app = connect().
-  use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
-  use(connect.average(5 /*duration*/)).       // reduce: to an average every 5 sec.
-  use(connect.queue(100)).                    // buffering max # of 100.
-  // transport(mqtt, localStorage, websocket and etc)
-  use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));
-
-sensor.discover('oneWire', function (err, ids) {
-  ids.forEach(function (id) {
-    var thermometer = sensor.createSensor('ds18b20', id);
-    app.listen(thermometer);
-  });
-});
-```
-
-## example - custom filter and route
-```javascript
-var app = connect().
-  use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
-  use(connect.average(5 /*duration*/)).       // reduce: to an average every 5 sec.
-  use(connect.queue(100)).                    // buffering max # of 100.
-  use(function (data, next) {                 // custom middleware
-    if (Math.max.apply(null, data.queue) < data.value) {
-      data.hint = 'new record';
-    } 
-    next();
-  }).
-  use('/oneWire/22/ds18b20', function (data, next) {
-    if (data.value > 30) {
-      data.message = 'too hot';  
-    }
-    next();
-  }).
-  use('/gpio/23/dht11', function (data, next) {
-    if (data.value < 20) {
-      data.message = 'too dry';  
-    }
-    next();
-  }).
-  use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));
-```
-
-There are more [examples](https://github.com/daliworks/sensorjs/tree/master/example).
+Examples are [here](https://github.com/daliworks/sensorjs/tree/master/example).
 
 ## Contributor
 
