@@ -1,7 +1,7 @@
 {
   "name": "sensorjs",
   "description": "sensor framework and beyond for internt of things",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": {
     "name": "byungjung",
     "email": "byungjung.kim@daliworks.co.kr"
