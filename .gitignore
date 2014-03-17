@@ -8,3 +8,4 @@ cscope.*
 *.log.*
 dump.rdb
 client/.idea/*
+.idea/*
