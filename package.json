@@ -9,7 +9,7 @@
   "dependencies": {
     "log4js": "0.6.8",
     "i2c": "0.1.4",
-    "onoff": "0.1.5",
+    "onoff": "0.3.0",
     "lodash": "~2.2.1",
     "underscore-query": "~0.4.0",
     "socket.io-client": "~0.9.11",
