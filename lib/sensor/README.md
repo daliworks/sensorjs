@@ -12,7 +12,7 @@ All sensors and auctuators are tested on Beaglebone Black.
  - (New) Photocell: light sensor over analog
 
 ### actuator
- - led: leds over gpio
+ - (New) rgbLed: REG LED actuator
 
 ## Example 
 
