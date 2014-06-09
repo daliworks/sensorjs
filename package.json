@@ -3,8 +3,8 @@
   "description": "sensor framework and beyond for internt of things",
   "version": "0.0.6",
   "author": {
-    "name": "byungjung",
-    "email": "byungjung.kim@daliworks.co.kr"
+    "name": "daliworks",
+    "email": "dev@daliworks.net"
   },
   "dependencies": {
     "log4js": "0.6.8",
