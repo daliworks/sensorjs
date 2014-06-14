@@ -26,9 +26,9 @@ var connect = require('sensorjs'),
    sensorDriver = connect.sensor;
 
 var app = connect().
-  use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
-  use(connect.average(20 /*duration*/)).     // reduce: values to an average every 20 sec.
-  use(function (data, next) {                // custom middleware
+  use(connect.filter({$between: [-50, 50]})).  // filter: passing between -50 and 50
+  use(connect.average(20 /*duration*/)).  // reduce: values to an average every 20 sec.
+  use(function (data, next) {  // custom middleware
     if (Math.max.apply(null, data.queue) < data.value) {
       console.log('new record', data.value);
     } 
