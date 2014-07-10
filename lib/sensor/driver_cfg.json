@@ -1,0 +1,4 @@
+{
+  "dht": ["dht11", "dht22"],
+  "futureSensor": ["futureDi", "futureTemp", "futureHumi"]
+}

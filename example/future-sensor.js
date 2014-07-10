@@ -4,13 +4,17 @@ var connect = require('../'),
    future = sensorDriver.getNetwork('future');
 
 var app = connect().
-  use(function (data, next) {                // custom middleware
-    console.log('temp=', data.value);
+  use('/future/*/futureTemp',function (data, next) { // custom middleware
+    console.log('Temp=', data.value);
+    next();
+  }).
+  use('/future/*/futureHumi',function (data, next) { // custom middleware
+    console.log('Humi=', data.value);
     next();
   }).
   use(connect.queue(100));                   // buffering max # of 100.
 
-future.discover('futureTemp'/* sensor driver name(or profile name) */, function (err, devices) {
+future.discover(function (err, devices) {
   devices.forEach(function (device) {
     device.sensorUrls.forEach(function (sensorUrl) {
       app.listen(sensorDriver.createSensor(sensorUrl));
