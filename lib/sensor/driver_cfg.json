@@ -1,4 +1,5 @@
 {
   "dht": ["dht11", "dht22"],
-  "futureSensor": ["futureDi", "futureTemp", "futureHumi"]
+  "futureSensor": ["futureDi", "futureTemp", "futureHumi"],
+  "digitalLight": ["TSL2561", "BH1750FVI"]
 }
