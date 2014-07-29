@@ -1,6 +1,6 @@
 {
   "dht": ["dht11", "dht22"],
   "futureSensor": ["futureDi", "futureTemp", "futureHumi"],
-  "digitalLight": ["TSL2561", "BH1750FVI"],
+  "digitalLight": ["TSL2561", "BH1750"],
   "futureActuator": ["futureDo"]
 }
