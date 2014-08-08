@@ -1,6 +1,8 @@
 {
   "dht": ["dht11", "dht22"],
   "futureSensor": ["futureDi", "futureTemp", "futureHumi"],
+  "futureActuator": ["futureDo"],
   "digitalLight": ["TSL2561", "BH1750"],
-  "futureActuator": ["futureDo"]
+  "digitalCO2": ["X100"],
+  "magneticSwitch": ["normallyClose", "normallyOpen"]
 }
