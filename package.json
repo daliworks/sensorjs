@@ -1,7 +1,7 @@
 {
   "name": "sensorjs",
   "description": "sensor framework and beyond for internt of things",
-  "version": "0.0.7-7",
+  "version": "0.0.7-8",
   "author": {
     "name": "daliworks",
     "email": "dev@daliworks.net"
