@@ -27,7 +27,7 @@ var app = connect().
   // transport(mqtt, localStorage, websocket and etc)
   //use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));
 
-sensorDriver.discover('ds18b20'/*sensor network*/, function (err, devices) {
+sensorDriver.discover('ds18b20'/*sensor driver*/, function (err, devices) {
   devices.forEach(function (device) {
     device.sensorUrls.forEach(function(sensorUrl) {
       app.listen(sensorDriver.createSensor(sensorUrl));
