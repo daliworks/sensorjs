@@ -1,6 +1,6 @@
 'use strict';
 var connect = require('../'),
-   sensorDriver = connect.sensor;
+   sensorApp = connect.sensor;
 
 var app = connect().
   use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
@@ -27,13 +27,13 @@ var app = connect().
   // transport(mqtt, localStorage, websocket and etc)
   //use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));
 
-sensorDriver.discover('ds18b20'/*sensor driver*/, function (err, devices) {
+sensorApp.discover('ds18b20'/*sensor driver*/, function (err, devices) {
   devices.forEach(function (device) {
     device.sensorUrls.forEach(function(sensorUrl) {
-      app.listen(sensorDriver.createSensor(sensorUrl));
+      app.listen(sensorApp.createSensor(sensorUrl));
     });
   });
 });
 // gpio is not discoverable
 var dhtUrl = 'sensorjs:///gpio/22/dht11/dht11';
-app.listen(sensorDriver.createSensor(dhtUrl));
+app.listen(sensorApp.createSensor(dhtUrl));

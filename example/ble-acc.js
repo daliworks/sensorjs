@@ -1,7 +1,7 @@
 'use strict';
 var connect = require('../'),
-   sensorDriver = connect.sensor,
-   ble = sensorDriver.getNetwork('ble');
+   sensorApp = connect.sensor,
+   ble = sensorApp.getNetwork('ble');
 
 var app = connect().
   use(function (data, next) {                // custom middleware
@@ -13,7 +13,7 @@ var app = connect().
 ble.discover('sensorTagAcc'/* sensor driver name(or profile name) */, function (err, devices) {
   devices.forEach(function (device) {
     device.sensorUrls.forEach(function (sensorUrl) {
-      app.listen(sensorDriver.createSensor(sensorUrl));
+      app.listen(sensorApp.createSensor(sensorUrl));
     });
   });
 });

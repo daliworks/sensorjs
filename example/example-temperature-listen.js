@@ -1,6 +1,6 @@
 'use strict';
 var connect = require('../'),
-   sensorDriver = connect.sensor;
+   sensorApp = connect.sensor;
 
 var app = connect().
   use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
@@ -15,10 +15,10 @@ var app = connect().
   // transport(mqtt, localStorage, websocket and etc)
   //use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));
 
-sensorDriver.discover('ds18b20'/* sensor driver name */, function (err, devices) {
+sensorApp.discover('ds18b20'/* sensor driver name */, function (err, devices) {
   devices.forEach(function (device) {
     device.sensorUrls.forEach(function (sensorUrl) {
-      var thermometer = sensorDriver.createSensor(sensorUrl);
+      var thermometer = sensorApp.createSensor(sensorUrl);
 
       // listen to sensor data for connecting 
       app.listen(thermometer);

@@ -1,11 +1,11 @@
 'use strict';
-var sensorDriver = require('../').sensor;
+var sensorApp = require('../').sensor;
 
-sensorDriver.discover('ds18b20'/* sensor driver name */, function (err, devices) {
+sensorApp.discover('ds18b20'/* sensor driver name */, function (err, devices) {
   devices.forEach(function (device) {
     device.sensorUrls.forEach(function (sensorUrl) {
       //device.connect(); //auto
-      var thermometer = sensorDriver.createSensor(sensorUrl); 
+      var thermometer = sensorApp.createSensor(sensorUrl);
       thermometer.get(function (err, data) {
         if (!err) {
           console.log(data);
@@ -15,11 +15,11 @@ sensorDriver.discover('ds18b20'/* sensor driver name */, function (err, devices)
   });
 });
 
-sensorDriver.getNetwork('w1').discover(null/* sensor driver name */, function (err, devices) {
+sensorApp.getNetwork('w1').discover(null/* sensor driver name */, function (err, devices) {
   devices.forEach(function (device) {
     device.sensorUrls.forEach(function (sensorUrl) {
       //device.connect(); //auto
-      var thermometer = sensorDriver.createSensor(sensorUrl); 
+      var thermometer = sensorApp.createSensor(sensorUrl);
       thermometer.get(function (err, data) {
         if (!err) {
           console.log(data);
@@ -30,7 +30,7 @@ sensorDriver.getNetwork('w1').discover(null/* sensor driver name */, function (e
 });
 
 var url = 'sensorjs:///w1/28-000003a7f590/ds18b20/28-000003a7f590';
-var therm = sensorDriver.createSensor(url);
+var therm = sensorApp.createSensor(url);
 therm.get(function (err, data) {
   console.log(url, data);
 });

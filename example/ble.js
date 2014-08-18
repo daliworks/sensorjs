@@ -1,7 +1,7 @@
 'use strict';
 var connect = require('../'),
-   sensorDriver = connect.sensor,
-   ble = sensorDriver.getNetwork('ble');
+   sensorApp = connect.sensor,
+   ble = sensorApp.getNetwork('ble');
 
 var app = connect().
   use(connect.filter({$between: [-50, 50]})). // filter: passing between -50 and 50
@@ -19,7 +19,7 @@ var app = connect().
 ble.discover('sensorTagHum'/* sensor driver name(or profile name) */, function (err, devices) {
   devices.forEach(function (device) {
     device.sensorUrls.forEach(function (sensorUrl) {
-      app.listen(sensorDriver.createSensor(sensorUrl));
+      app.listen(sensorApp.createSensor(sensorUrl));
     });
   });
 });
