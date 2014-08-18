@@ -1,7 +1,7 @@
 {
   "name": "sensorjs",
   "description": "sensor framework and beyond for internt of things",
-  "version": "0.0.8-0",
+  "version": "0.0.9-0",
   "author": {
     "name": "daliworks",
     "email": "dev@daliworks.net"
@@ -17,8 +17,8 @@
     "nmea": "0.0.7",
     "serialport": "~1.4.5",
     "noble": "0.3.4",
-    "net-snmp": "https://bitbucket.org/stephenwvickers/node-net-snmp/get/tip.tar.gz",
-    "sensor_tsl2561": "0.2.2"
+    "sensor_tsl2561": "0.2.2",
+    "sensorjs-futuretek": "latest"
   },
   "repository": {
     "type": "git",
