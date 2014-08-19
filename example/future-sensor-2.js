@@ -1,6 +1,7 @@
 /* jshint strict: true */
 /* global console, require  */
 
+// NOTE: sensorjs-futuretek is required (npm install sensorjs-futuretek)
 var connect = require('../'),
     sensorApp = connect.sensor,
     futureSensor = require('sensorjs-futuretek');
