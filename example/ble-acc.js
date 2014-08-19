@@ -1,7 +1,13 @@
 'use strict';
+
+// NOTE: sensorjs-ble is required (npm install sensorjs-ble)
 var connect = require('../'),
    sensorApp = connect.sensor,
-   ble = sensorApp.getNetwork('ble');
+   bleSensor = require('sensorjs-ble'),
+   ble;
+   
+sensorApp.addSensorPackage(bleSensor);
+ble = sensorApp.getNetwork('ble');
 
 var app = connect().
   use(function (data, next) {                // custom middleware
