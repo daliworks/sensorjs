@@ -3,5 +3,6 @@
   "digitalLight": ["TSL2561", "BH1750"],
   "digitalCO2": ["X100"],
   "digitalHumidity": ["HTU21D"],
-  "magneticSwitch": ["normallyClose", "normallyOpen"]
+  "magneticSwitch": ["normallyClose", "norm`allyOpen"],
+  "motionDetector": ["passiveInfrared"]
 }
