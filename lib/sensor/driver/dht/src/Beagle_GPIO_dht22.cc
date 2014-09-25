@@ -26,6 +26,9 @@
 
 #define ABS(a)  (((a)<0)?-(a):(a))
 
+#define GPIO_TABLE_SIZE 92
+#define MAX_GPIO_ADDRESS 125
+
 timespec diff(timespec start, timespec end);
 
 Beagle_GPIO	gpio;
@@ -33,7 +36,33 @@ struct timespec startTime;
 clockid_t clk_id = CLOCK_REALTIME ;
 int debug = false;
 
+const int gpio_address_table[] =
+{
+  -1, -1, 38, 39, 34, // P8_1  -> P8_5
+  35, 66, 67, 69, 68, // P8_6  -> P8_10
+  45, 44, 23, 26, 47,   // P8_11 -> P8_15  13, 14
+  46, 27, 65, 22, 63,   // P8_16 -> P8_20  17, 19
+  62, 37, 36, 33, 32,   // P8_21 -> P8_25
+  61, 86, 88, 87, 89,   // P8_26 -> P8_30
+  10, 11,  9, 81,  8,   // P8_31 -> P9_35  31, 32, 33, 35
+  80, 78, 79, 76, 77,   // P8_36 -> P8_40
+  74, 75, 72, 73, 70,   // P8_41 -> P8_45
+  71,     // P8_46
+  -1, -1, -1, -1, -1,   // P9_1  -> P9_5
+  -1, -1, -1, -1, -1, // P9_6  -> P9_10
+  30, 60, 31, 40, 48,   // P9_11 -> P9_15  11, 13
+  51,  4,  5, -1, -1,   // P9_16 -> P9_20
+   3,  2, 49, 15,117,   // P9_21 -> P9_25  21, 22, 24
+  14,125,123,121,122,   // P9_26 -> P9_30  26
+ 120, -1, -1, -1, -1,   // P9_31 -> P9_35
+  -1, -1, -1, -1, -1,   // P9_36 -> P9_40
+  20,  7, -1, -1, -1,   // P9_41 -> P9_45  41, 42
+  -1      // P9_46
+};
+
 void check_timeout();
+unsigned short get_pin_index_with_gpio_address(int gpio_address);
+
 int main(int argc, char* argv[])
 {
   //	std::cerr << "==========================\n";
@@ -53,11 +82,12 @@ int main(int argc, char* argv[])
   //clockid_t clk_id = CLOCK_PROCESS_CPUTIME_ID;
   int c, index;
   char* cvalue;
+  int gpio_address = 0;
 
   // argument parsing
   opterr = 0;
 
-  while ((c = getopt (argc, argv, "hds:")) != -1)
+  while ((c = getopt (argc, argv, "hds:g:")) != -1)
     switch (c)
     {
       case 'd':
@@ -66,8 +96,23 @@ int main(int argc, char* argv[])
       case 's':
         if (strcmp(optarg, "dht11") == 0) { sensor = DHT11; }
         break;
+      case 'g':
+        if (strcmp(optarg, "") != 0) {
+          gpio_address = atoi(optarg);
+          if (gpio_address < 0 || gpio_address > MAX_GPIO_ADDRESS) {
+            std::cout << "{\"status\": \"error\", \"message\":  \"GPIO address is out of range.\"}";
+            exit(0);
+          }
+          pin = get_pin_index_with_gpio_address(gpio_address);
+          if (pin < 0) {
+            std::cout << "{\"status\": \"error\", \"message\":  \"Wrong GPIO address\"}";
+            exit(0);
+          }
+        }
+        break;
       default:
-        fprintf(stderr, "Usage:\n\t%s [-d] [-s sensorname]\n\t-d: debug\n\t-s: specify sensor, default dht22", argv[0]);
+        fprintf(stderr, "Usage:\n\t%s [-d] [-s sensorname] [-g GPIO address]\n\t-d: debug\n\t-s: specify sensor, default dht22\n\t-g: GPIO address, default 27\n", argv[0]);
+        exit(0);
     }
 
   clock_gettime(clk_id, &startTime);
@@ -223,4 +268,18 @@ timespec diff(timespec start, timespec end)
     temp.tv_nsec = end.tv_nsec-start.tv_nsec;
   }
   return temp;
+}
+
+unsigned short get_pin_index_with_gpio_address(int gpio_address)
+{
+  int array_size = GPIO_TABLE_SIZE;
+  unsigned short pin_index = -1;
+
+  for (unsigned short i = 0; i < array_size; i++) {
+    if (gpio_address == gpio_address_table[i]) {
+      pin_index = i;
+    }
+  }
+
+  return pin_index;
 }
