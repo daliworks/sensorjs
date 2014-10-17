@@ -1,19 +1,19 @@
 {
   "name": "sensorjs",
   "description": "sensor framework and beyond for internt of things",
-  "version": "0.1.0-1",
+  "version": "0.1.1-0",
   "author": {
     "name": "daliworks",
     "email": "dev@daliworks.net"
   },
   "dependencies": {
-    "log4js": "0.6.16",
+    "async": "0.9",
+    "lodash": "2.4",
+    "log4js": "0.6",
     "i2c": "0.1.4",
     "onoff": "0.3.2",
-    "lodash": "~2.4.1",
     "underscore-query": "~0.4.0",
     "socket.io-client": "~0.9.11",
-    "async": "~0.9.0",
     "nmea": "0.0.7",
     "serialport": "~1.4.5",
     "sensor_tsl2561": "0.2.2"
