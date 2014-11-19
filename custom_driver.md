@@ -337,7 +337,7 @@ CustomActuator.prototype.on = function (options, cb) {
 };
 
 // 3. Implement 'off' function
-CustomActuator.prototype.on = function (options, cb) {
+CustomActuator.prototype.off = function (options, cb) {
   var error, rtnMessage;
 
   // Place here to control the actuator with off command
