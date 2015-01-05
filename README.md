@@ -7,7 +7,8 @@ And it's working on linux boards such as the BeagleBone or Raspberry Pi.
 
 ![gateway](https://raw.github.com/daliworks/sensorjs/master/doc/image/gateway.png "gateway")
 
-[Here](https://github.com/daliworks/sensorjs/blob/master/lib/sensor/README.md) is currently available sensors.
+[Here](https://github.com/daliworks/sensorjs/blob/master/doc/custom_driver.md) is the guide to create your own driver.
+[Here](https://github.com/daliworks/sensorjs/blob/master/lib/sensor/README.md) is currently available sensor driver list.
 
 ## Installation
 
