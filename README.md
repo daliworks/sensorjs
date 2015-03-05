@@ -10,6 +10,8 @@ And it's working on linux boards such as the BeagleBone or Raspberry Pi.
 [Here](https://github.com/daliworks/sensorjs/blob/master/doc/custom_driver.md) is the guide to create your own driver.
 [Here](https://github.com/daliworks/sensorjs/blob/master/lib/sensor/README.md) is currently available sensor driver list.
 
+See also [sensorjs-app](https://github.com/daliworks/sensorjs-app)
+
 ## Installation
 
     $ npm install sensorjs 
@@ -70,4 +72,5 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[@sensorjs](https://twitter.com/sensorjs)
+[Facebook](https://www.facebook.com/groups/sensor.js)
+[Twitter](https://twitter.com/sensorjs)
