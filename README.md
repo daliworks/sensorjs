@@ -17,11 +17,11 @@ See also [sensorjs-app](https://github.com/daliworks/sensorjs-app)
     $ npm install sensorjs 
 
 ## sensor.js URL scheme
-### sensorjs://[{gateway}]/{sensor network}[:{bus id}]/{address}/{sensor model}/{sensor id}
+### sensorjs://[{gateway}]/{sensor_network}[:{bus_id}]/{address}/{sensor_model}/{sensor_id}{&query_strings}
  - example
-    - ```sensorjs:///ble/000A3A58F310/dht22/22-000003a7f590```
     - ```sensorjs:///i2c:1/33/dht33/22-000003a7f590```
-    - ```sensorjs:///gpio/22/singleled/r222```
+    - ```sensorjs:///gpio/22/singleled/r222&name=sensingLed```
+    - ```sensorjs:///ble/000A3A58F310/proximity/0A3A58F310-1```
 
 ## Example
 ```js
