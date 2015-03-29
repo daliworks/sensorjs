@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Sensorjs : node based sensor driver framework">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Sensorjs</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/daliworks/sensorjs">View on GitHub</a>
+
+          <h1 id="project_title">Sensorjs</h1>
+          <h2 id="project_tagline">node based sensor driver framework</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/daliworks/sensorjs/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/daliworks/sensorjs/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="sensorjs" class="anchor" href="#sensorjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sensor.js</h1>
+
+<p>Sensor.js handles all about sensor with powerful and familiar techs.
+In other words this sensorjs is not only sensor driver module but also framework like express.</p>
+
+<p>And it's working on linux boards such as the BeagleBone or Raspberry Pi.</p>
+
+<p><img src="https://raw.github.com/daliworks/sensorjs/master/doc/image/gateway.png" alt="gateway" title="gateway"></p>
+
+<p><a href="https://github.com/daliworks/sensorjs/blob/master/doc/custom_driver.md">Here</a> is the guide to create your own driver.
+<a href="https://github.com/daliworks/sensorjs/blob/master/lib/sensor/README.md">Here</a> is currently available sensor driver list.</p>
+
+<p>See also <a href="https://github.com/daliworks/sensorjs-app">sensorjs-app</a></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>$ npm install sensorjs 
+</code></pre>
+
+<h2>
+<a id="sensorjs-url-scheme" class="anchor" href="#sensorjs-url-scheme" aria-hidden="true"><span class="octicon octicon-link"></span></a>sensor.js URL scheme</h2>
+
+<h3>
+<a id="sensorjsgatewaysensor_networkbus_idaddresssensor_modelsensor_idquery_strings" class="anchor" href="#sensorjsgatewaysensor_networkbus_idaddresssensor_modelsensor_idquery_strings" aria-hidden="true"><span class="octicon octicon-link"></span></a>sensorjs://[{gateway}]/{sensor_network}[:{bus_id}]/{address}/{sensor_model}/{sensor_id}{&amp;query_strings}</h3>
+
+<ul>
+<li>example
+
+<ul>
+<li><code>sensorjs:///i2c:1/33/dht33/22-000003a7f590</code></li>
+<li><code>sensorjs:///gpio/22/singleled/r222&amp;name=sensingLed</code></li>
+<li><code>sensorjs:///ble/000A3A58F310/proximity/0A3A58F310-1</code></li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> connect <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>sensorjs<span class="pl-pds">'</span></span>),
+   sensorDriver <span class="pl-k">=</span> connect.sensor;
+
+<span class="pl-k">var</span> app <span class="pl-k">=</span> connect().
+  use(connect.filter({$between<span class="pl-k">:</span> [<span class="pl-k">-</span><span class="pl-c1">50</span>, <span class="pl-c1">50</span>]})).  <span class="pl-c">// filter: passing between -50 and 50</span>
+  use(connect.average(<span class="pl-c1">20</span> <span class="pl-c">/*duration*/</span>)).  <span class="pl-c">// reduce: values to an average every 20 sec.</span>
+  use(<span class="pl-k">function</span> (<span class="pl-smi">data</span>, <span class="pl-smi">next</span>) {  <span class="pl-c">// custom middleware</span>
+    <span class="pl-k">if</span> (<span class="pl-c1">Math</span>.max.<span class="pl-c1">apply</span>(<span class="pl-c1">null</span>, data.queue) <span class="pl-k">&lt;</span> data.<span class="pl-c1">value</span>) {
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>new record<span class="pl-pds">'</span></span>, data.<span class="pl-c1">value</span>);
+    } 
+    next();
+  }).
+  use(connect.queue(<span class="pl-c1">100</span>)).                   <span class="pl-c">// buffering max # of 100.</span>
+  use(<span class="pl-s"><span class="pl-pds">'</span>/w1/*/ds18b20<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">data</span>, <span class="pl-smi">next</span>) {
+    <span class="pl-k">if</span> (data.<span class="pl-c1">value</span> <span class="pl-k">&gt;</span> <span class="pl-c1">20</span>) {
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>getting hot:<span class="pl-pds">'</span></span>, data.<span class="pl-c1">value</span>);
+    }
+    next();
+  }).
+  use(<span class="pl-s"><span class="pl-pds">'</span>/gpio/*/dht11<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">data</span>, <span class="pl-smi">next</span>) {
+    <span class="pl-k">if</span> (data.<span class="pl-c1">value</span> <span class="pl-k">&lt;</span> <span class="pl-c1">30</span>) {
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>getting dry:<span class="pl-pds">'</span></span>, data.<span class="pl-c1">value</span>);
+    }
+    next();
+  });
+  <span class="pl-c">// transport(mqtt, localStorage, websocket and etc)</span>
+  <span class="pl-c">//use(connect.websocket('http://yourhost.com', 'temperature/{id}'/*topic*/));</span></pre></div>
+
+<p>More examples are <a href="https://github.com/daliworks/sensorjs/tree/master/example">here</a>.</p>
+
+<p><a href="https://www.facebook.com/groups/sensor.js">Facebook</a>
+<a href="https://twitter.com/sensorjs">Twitter</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Sensorjs maintained by <a href="https://github.com/daliworks">daliworks</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
