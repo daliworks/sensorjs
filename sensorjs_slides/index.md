@@ -281,7 +281,7 @@ More details are [here](https://github.com/daliworks/sensorjs-app/blob/master/sr
 
 ---
 
-##REST API
+## REST API
 
 
 Example: `GET /api/getSensorValue`
