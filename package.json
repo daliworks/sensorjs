@@ -10,7 +10,7 @@
     "async": "0.9",
     "lodash": "2.4",
     "log4js": "0.6",
-    "i2c": "0.1.4",
+    "i2c": "0.2.1",
     "onoff": "0.3.2",
     "underscore-query": "~0.4.0",
     "socket.io": "1.1",
