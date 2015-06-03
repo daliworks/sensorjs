@@ -16,7 +16,8 @@
     "socket.io": "1.1",
     "socket.io-client": "1.1",
     "nmea": "0.0.7",
-    "serialport": "~1.4.5"
+    "serialport": "~1.4.5",
+    "sensor_tsl2561": "0.2.2"
   },
   "repository": {
     "type": "git",
