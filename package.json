@@ -17,7 +17,7 @@
     "socket.io-client": "1.1",
     "nmea": "0.0.7",
     "serialport": "~1.4.5",
-    "sensor_tsl2561": "0.2.2"
+    "sensor_tsl2561": "git+https://github.com/nage-son/tsl2561_node.git"
   },
   "repository": {
     "type": "git",
