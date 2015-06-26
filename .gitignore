@@ -10,3 +10,4 @@ dump.rdb
 client/.idea/*
 .idea/*
 tags
+sftp-config.json
