@@ -10,7 +10,7 @@ CFLAGS=-Wall -c -g
 #LDFLAGS=-Wall -O3
 LDFLAGS=-Wall -g
 
-BIN_DIR=../bin
+BIN_DIR=../../bin
 TARGETS = Beagle_GPIO.o	\
 	  $(BIN_DIR)/Beagle_GPIO_dht22
 
