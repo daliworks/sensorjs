@@ -213,10 +213,9 @@ bool checkPin(char* pin) {
             }
         }
     } else {
-        // TODO: add body
-        printf("Usage : sudo ./Raspberry_DHT11 -s [model] -g [G:PIN|W:PIN]\n");
-        printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g G:18 => DHT11, GPIO_18\n");
-        printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g W:1 => DHT11, WiringPi 1\n");
+        // only pin number -> GPIO
+        pinNum = atoi(pin);
+        isAvailable = true;
     }
 
     #ifdef DEBUG
