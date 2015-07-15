@@ -16,7 +16,7 @@
 #include <string.h>
 #define MAXTIMINGS  85
 
-// #define DEBUG
+#define DEBUG
 
 typedef enum {
     false,
