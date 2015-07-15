@@ -218,7 +218,7 @@ bool checkPin(char* pin) {
         printf("extractPin >>> %s\n", pin);
         #endif
 
-        pinNum = atoi(pin);
+        PIN = atoi(pin);
         isAvailable = true;
     }
 
