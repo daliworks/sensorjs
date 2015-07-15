@@ -214,6 +214,10 @@ bool checkPin(char* pin) {
         }
     } else {
         // only pin number -> GPIO
+        #ifdef DEBUG
+        printf("extractPin >>> %s\n", pin);
+        #endif
+
         pinNum = atoi(pin);
         isAvailable = true;
     }
