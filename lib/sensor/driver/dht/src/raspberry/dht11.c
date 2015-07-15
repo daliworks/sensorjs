@@ -125,13 +125,13 @@ int main(int argc, char* argv[]) {
                 }
 
                 break;
-            default:
-                printf("Usage : sudo ./Raspberry_DHT11 -s [model] -g [G:PIN|W:PIN]\n");
-                printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g G:18 => DHT11, GPIO_18\n");
-                printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g W:1 => DHT11, WiringPi 1\n");
+            // default:
+            //     printf("Usage : sudo ./Raspberry_DHT11 -s [model] -g [G:PIN|W:PIN]\n");
+            //     printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g G:18 => DHT11, GPIO_18\n");
+            //     printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g W:1 => DHT11, WiringPi 1\n");
 
-                exit(1);
-                break;
+            //     exit(1);
+            //     break;
         }
     }
 
@@ -218,8 +218,21 @@ bool checkPin(char* pin) {
         printf("extractPin >>> %s\n", pin);
         #endif
 
-        PIN = atoi(pin);
-        isAvailable = true;
+        char extractPin[2];
+
+        memset(extractPin, '\0', sizeof(extractPin));
+        strncpy(extractPin, pin, 2);
+
+        pinNum = atoi(extractPin);
+
+        for (i = 0; i < gpioLength; i++) {
+            if (GPIO_PIN[i] == pinNum) {
+                isAvailable = true;
+                PIN = WIRING_PIN[i];
+
+                break;
+            }
+        }
     }
 
     #ifdef DEBUG
@@ -230,6 +243,9 @@ bool checkPin(char* pin) {
 }
 
 bool read_dht11_dat() {
+    #ifdef DEBUG
+    printf("start read data[%d].\n", PIN);
+    #endif
     uint8_t laststate   = HIGH;
     uint8_t counter     = 0;
     uint8_t j       = 0, i;
@@ -294,7 +310,10 @@ bool read_dht11_dat() {
 
         return true;
     }else  {
-        // printf( "Data not good, skip\n" );
+        #ifdef DEBUG
+        printf( "Data not good, skip\n");
+        #endif
+
         return false;
     }
 }
