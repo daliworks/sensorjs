@@ -3,16 +3,10 @@ echo "-----------------------------------------"
 echo "Install wiringPi static library."
 cd ./lib/wiringPi/wiringPi && make static
 
-# if [ $EUID != 0 ]; then
-#     echo "Enter sudo password"
-#     echo -n Password:
-#     read -s password
-# fi
-
 echo sudo make install-static
 
 echo "-----------------------------------------"
-echo "Delte previous file..."
+echo "Delte old file..."
 rm ../../../../../bin/Raspberry_DHT11
 
 echo "Compile dht11..."
