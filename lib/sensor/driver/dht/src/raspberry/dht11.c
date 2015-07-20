@@ -101,6 +101,9 @@ bool checkPin(char* pin);
 bool read_dht11_dat();
 
 int main(int argc, char* argv[]) {
+    #ifdef DEBUG
+    printf("argument count : %d\n", argc);
+    #endif
     if (argc != 5) {
         printf("Usage : sudo ./Raspberry_DHT11 -s [model] -g [G:PIN|W:PIN]\n");
         printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g G:18 => DHT11, GPIO_18\n");
