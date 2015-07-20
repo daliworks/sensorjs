@@ -104,7 +104,7 @@ int main(int argc, char* argv[]) {
     #ifdef DEBUG
     printf("argument count : %d\n", argc);
     #endif
-    
+
     if (argc != 5) {
         printf("Usage : sudo ./Raspberry_DHT11 -s [model] -g [G:PIN|W:PIN]\n");
         printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g G:18 => DHT11, GPIO_18\n");
@@ -159,7 +159,7 @@ void printMessage(bool result, char message[]) {
     if (!result) {
         printf("{\"status\":\"error\", \"message\": \"%s\"}\n", message);
     } else {
-        printf("{\"status\":\"ok\", \"result\":{\"temperature\": %.2f, \"humidity\": %.2f}}\n", datas[0], datas[1]);
+        printf("{\"status\":\"ok\", \"result\":{\"temperature\": %.2f, \"humidity\": %.2f}}", datas[0], datas[1]);
     }
 }
 
