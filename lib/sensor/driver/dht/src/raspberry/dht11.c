@@ -16,7 +16,7 @@
 #include <string.h>
 #define MAXTIMINGS  85
 
-#define DEBUG
+// #define DEBUG
 
 typedef enum {
     false,
@@ -128,13 +128,6 @@ int main(int argc, char* argv[]) {
                 }
 
                 break;
-            // default:
-            //     printf("Usage : sudo ./Raspberry_DHT11 -s [model] -g [G:PIN|W:PIN]\n");
-            //     printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g G:18 => DHT11, GPIO_18\n");
-            //     printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g W:1 => DHT11, WiringPi 1\n");
-
-            //     exit(1);
-            //     break;
         }
     }
 
@@ -147,9 +140,15 @@ int main(int argc, char* argv[]) {
     while (1) {
         if (read_dht11_dat()) {
             printMessage(true, NULL);
+
+            #ifndef DEBUG
+            break;
+            #endif
         }
 
+        #ifdef DEBUG
         delay( 1000 ); /* wait 1sec to refresh */
+        #endif
     }
 
     return(0);
