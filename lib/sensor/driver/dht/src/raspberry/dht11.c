@@ -16,6 +16,7 @@
 #include <string.h>
 #define MAXTIMINGS  85
 
+// 배포시에는 반드시 주석 처리하여야 함.
 // #define DEBUG
 
 typedef enum {
@@ -25,7 +26,6 @@ typedef enum {
 
 int dht11_dat[5] = { 0, 0, 0, 0, 0 };
 int PIN;
-// char* model[];
 float datas[2];
 
 const char* GPIO_PREFIX = "G:";
@@ -103,33 +103,38 @@ bool read_dht11_dat();
 int main(int argc, char* argv[]) {
     #ifdef DEBUG
     printf("argument count : %d\n", argc);
+    printf("argument[0] : %c\n", argv[0]);
     #endif
 
-    if (argc != 5) {
-        printf("Usage : sudo ./Raspberry_DHT11 -s [model] -g [G:PIN|W:PIN]\n");
-        printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g G:18 => DHT11, GPIO_18\n");
-        printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g W:1 => DHT11, WiringPi 1\n");
-
-        exit(1);
-    }
-
     int opt;
+    int argumentCount = 0;
 
     while ((opt = getopt(argc, argv, "s:g:")) != -1) {
-        #ifdef DEBUG
-        printf("%c\n", opt);
-        #endif
-
         switch (opt) {
             case 's':
+                argumentCount++;
                 break;
             case 'g': 
+                argumentCount++;
+
                 if (!checkPin(optarg)) {
                     exit(1);
                 }
 
                 break;
         }
+    }
+
+    #ifdef DEBUG
+    printf("argumentCount >>> %d\n", argumentCount);
+    #endif
+
+    if (argumentCount != 2) {
+        printf("Usage : sudo ./Raspberry_DHT11 -s [model] -g [G:PIN|W:PIN]\n");
+        printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g G:18 => DHT11, GPIO_18\n");
+        printf("Example : sudo ./Raspberry_DHT11 -s DHT11 -g W:1 => DHT11, WiringPi 1\n");
+
+        exit(1);
     }
 
     if ( wiringPiSetup() == -1 ) {
@@ -159,7 +164,7 @@ void printMessage(bool result, char message[]) {
     if (!result) {
         printf("{\"status\":\"error\", \"message\": \"%s\"}\n", message);
     } else {
-        printf("{\"status\":\"ok\", \"result\":{\"temperature\": %.2f, \"humidity\": %.2f}}", datas[0], datas[1]);
+        printf("{\"status\":\"ok\", \"result\":{\"temperature\": %.2f, \"humidity\": %.2f}}\n", datas[0], datas[1]);
     }
 }
 
