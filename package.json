@@ -1,33 +1,33 @@
 {
-  "name": "sensorjs",
-  "description": "sensor framework and beyond for internt of things",
-  "version": "0.1.2-1",
-  "author": {
-    "name": "daliworks",
-    "email": "dev@daliworks.net"
+  "name" : "sensorjs",
+  "description" : "sensor framework and beyond for internt of things",
+  "version" : "0.1.2-1",
+  "author" : {
+    "name" : "daliworks",
+    "email" : "dev@daliworks.net"
   },
-  "dependencies": {
-    "async": "0.9",
-    "lodash": "2.4",
-    "log4js": "0.6",
-    "i2c": "0.2.1",
-    "onoff": "0.3.2",
-    "underscore-query": "~0.4.0",
-    "socket.io": "1.1",
-    "socket.io-client": "1.1",
-    "nmea": "0.0.7",
-    "serialport": "~1.7.4",
-    "sensor_tsl2561": "git+https://github.com/nage-son/tsl2561_node.git"
+  "dependencies" : {
+    "async" : "0.9",
+    "lodash" : "2.4",
+    "log4js" : "0.6",
+    "i2c" : "0.2.1",
+    "onoff" : "0.3.2",
+    "underscore-query" : "~0.4.0",
+    "socket.io" : "1.1",
+    "socket.io-client" : "1.1",
+    "nmea" : "0.0.7",
+    "serialport" : "~1.7.4",
+    "sensor_tsl2561" : "git+https://github.com/nage-son/tsl2561_node.git"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:daliworks/sensorjs"
+  "repository" : {
+    "type" : "git",
+    "url" : "git@github.com:daliworks/sensorjs"
   },
-  "bugs": {
-    "url": "https://github.com/daliworks/sensorjs/issues"
+  "bugs" : {
+    "url" : "https://github.com/daliworks/sensorjs/issues"
   },
-  "main": "index",
-  "keywords": [
+  "main" : "index",
+  "keywords" : [
     "sensor",
     "sensor.js",
     "beaglebone",
@@ -37,13 +37,13 @@
     "i2c",
     "driver"
   ],
-  "engines": {
-    "node": ">=0.8.x"
+  "engines" : {
+    "node" : ">=0.8.x"
   },
-  "licenses": [
+  "licenses" : [
     {
-      "type": "MIT",
-      "url": "https://github.com/daliworks/sensorjs/blob/msater/LICENSE"
+      "type" : "MIT",
+      "url" : "https://github.com/daliworks/sensorjs/blob/msater/LICENSE"
     }
   ]
 }
