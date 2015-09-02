@@ -420,11 +420,16 @@ function discoverSensors(model, cb) {
   return cb && cb(error, addresses);
 }
 
-CustomNetwork.prototype.discover = function (driverOrModel, cb) {
+CustomNetwork.prototype.discover = function (driverOrModel, options, cb) {
   var self = this,
       founds = [],
       models,
       modelCount;
+
+  if (typeof options === 'function') {
+    cb = options;
+    options = undefined;
+  }
 
   // Get models from driverName or from model
   models = sensorDriver.getDriverConfig()[driverOrModel];
