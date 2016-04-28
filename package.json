@@ -7,7 +7,7 @@
     "email": "dev@daliworks.net"
   },
   "dependencies": {
-    "async": "0.9",
+    "async": "1.5.2",
     "lodash": "2.4",
     "log4js": "0.6",
     "i2c": "0.1.4",
