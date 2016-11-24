@@ -355,7 +355,7 @@ CustomActuator.prototype.additionalCommand = function (options, cb) {
 };
 
 // When the 'clear' method of created sensor instance is called.
-CustomSensor.prototype._clear = function () {
+CustomActuator.prototype._clear = function () {
   // 5. Place here the clearing codes.
 
   return;
