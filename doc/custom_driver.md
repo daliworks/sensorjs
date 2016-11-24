@@ -229,7 +229,7 @@ function watchSensorValue(cb) {
 
 // 2. Implement _enableChange function to enable onChange event.
 //    Remove _enableChange function if onChange event is not necessary
-FutureSensor.prototype._enableChange = function () {
+CustomSensor.prototype._enableChange = function () {
   var self = this,
       rtn,
       previousRtn;
