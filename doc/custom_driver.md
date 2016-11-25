@@ -494,6 +494,6 @@ Change the names of network, driver, model, data types, and etc.
 ### Node libraries (dependencies)
 
 ```
-"async": "0.9",
-"lodash": "2.4",
+"async": "1.5.2",
+"lodash": "2.4.1",
 ```
