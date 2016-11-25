@@ -126,7 +126,7 @@ function initNetworks() {
   var customNetwork;
 
   try {
-    customNetwork = require('./network/custom');
+    customNetwork = require('./network/customNetwork');
   } catch (e) { }
 
   return {
