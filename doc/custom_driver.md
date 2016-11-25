@@ -130,7 +130,7 @@ function initNetworks() {
   } catch (e) { }
 
   return {
-    custom: customNetwork
+    customNetwork: customNetwork
   };
 }
 
